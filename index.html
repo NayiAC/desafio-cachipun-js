@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cachipun</title>
+</head>
+
+<body>
+  <script>
+    //cantidad de rondas
+    let numRonunds = parseInt(prompt("¿cuántas veces deseas jugar?: "));
+
+    //jugada maquina usando Math.floor
+    let randomNumber = Math.floor(Math.random() * 3);
+    let machineMove
+
+    if (randomNumber === 0) {
+      machineMove = "piedra"
+    }
+    else if (randomNumber === 1) {
+      machineMove = "papel"
+    }
+    else if (randomNumber === 2) {
+      machineMove = "tijera"
+    }
+
+    //contador
+    let machineWins = 0
+    let playerWins = 0
+
+    for (let i = 1; i <= numRonunds; i++) {
+      //jugada usuario
+      let player = prompt("Elije: piedra papel o tijera")
+
+      //posibilidades
+      if 
+      (
+        player.toLowerCase() === "piedra" && machineMove === "piedra" ||
+        player.toLowerCase() === "papel" && machineMove === "papel" ||
+        player.toLowerCase() === "tijera" && machineMove === "tijera"
+      ) {
+        alert(`elegiste ${player} y la maquina ${machineMove}: Empate`)
+      } 
+      else if 
+      (
+        player.toLowerCase() === "piedra" && machineMove === "tijera" ||
+        player.toLowerCase() === "papel" && machineMove === "piedra" ||
+        player.toLowerCase() === "tijera" && machineMove === "papel"
+      ) {
+        alert(`elegiste ${player} y la maquina ${machineMove}: Ganaste esta ronda`)
+        ganadasUsuario++
+      } 
+      else if 
+      (
+        player.toLowerCase() === "tijera" && machineMove === "piedra" ||
+        player.toLowerCase() === "piedra" && machineMove === "papel" ||
+        player.toLowerCase() === "papel" && machineMove === "tijera"
+      ) {
+        alert(`elegiste ${player} y la maquina ${machineMove}: Perdiste esta ronda`)
+        ganadasMaquina++
+      } 
+      else 
+      {
+        alert("Ingresa una opcion válida: Piedra, Papel o Tijera")
+        i--
+      }
+    }
+
+    //resultado
+    if (playerWins > machineWins)
+    {
+      alert(`Le ganste a la maquina con ${playerWins} rondas`)
+    } 
+    else if (playerWins < machineWins) 
+    {
+      alert(`perdiste, la maquina gano ${machineWins} rondas`)
+    } 
+    else if (playerWins === machineWins) 
+    {
+      alert(`Hay un empate, ganaste ${playerWins} rondas y la maquina ganó ${machineWins} rondas`)
+    }
+
+  </script>
+</body>
+
+</html>
